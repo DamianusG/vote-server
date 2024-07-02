@@ -5,19 +5,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const { Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize('vote_app_s','root','', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
-
-sequelize.authenticate().then (() => {
-  console.log('Connection has been established successfully.');
-}).catch((error) => {
-  console.error('Unable to connect to the database: ', error);
-})
-
 const votersRoute = require('./routes/Voters')
 
 app.use("/voters", votersRoute);
